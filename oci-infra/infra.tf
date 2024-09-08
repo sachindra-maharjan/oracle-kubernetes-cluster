@@ -14,7 +14,7 @@ module "vcn" {
   nat_gateway_route_rules      = null
 
   vcn_name      = "k8s-vcn"
-  vcn_dns_label = "footyk8svcn"
+  vcn_dns_label = "k8svcn"
   vcn_cidrs     = ["10.0.0.0/16"]
 
   create_internet_gateway = true
@@ -154,7 +154,7 @@ resource "oci_core_subnet" "vcn_public_subnet" {
 
 resource "oci_containerengine_cluster" "k8s_cluster" {
   compartment_id     = var.compartment_id
-  kubernetes_version = "v1.27.2"
+  kubernetes_version = var.kubernetes_version
   name               = "k8s-cluster"
   vcn_id             = module.vcn.vcn_id
 
@@ -183,7 +183,7 @@ data "oci_identity_availability_domains" "ads" {
 resource "oci_containerengine_node_pool" "k8s_node_pool" {
   cluster_id         = oci_containerengine_cluster.k8s_cluster.id
   compartment_id     = var.compartment_id
-  kubernetes_version = "v1.30.1"
+  kubernetes_version = var.kubernetes_version
   name               = "k8s-node-pool"
   node_config_details {
     placement_configs {

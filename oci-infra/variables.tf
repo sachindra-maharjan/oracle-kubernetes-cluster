@@ -12,3 +12,9 @@ variable "ssh_public_key" {
   type        = string
   description = "The SSH public key to use for connecting to the worker nodes"
 }
+
+variable "kubernetes_version" {
+  type        = string
+  description = "Kubernetes version"
+  value       = "v1.30.1"
+}
