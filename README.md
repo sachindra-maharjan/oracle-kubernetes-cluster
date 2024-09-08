@@ -1,9 +1,9 @@
-# OCI Configuration
+# Free Oracle Kubernetes with Terraform
+
+## OCI Configuration
 ```
 oci setup config
 ```
-
-# Terraform 
 
 ## Setting up the Terraform variables
 
@@ -21,7 +21,7 @@ region = <your region>
 ssh_public_key = <your public key>
 ```
 
-### Deploy Kubernetes Cluster
+## Deploy Kubernetes Cluster
 ```
 # Initialize
 terraform init
@@ -56,3 +56,40 @@ kubectl get nodes
 ```
 
 The cluster is ready when nool pool has been provisioned and has 2 nodes.
+
+
+# Exposing apps from an Oracle Kubernetes cluster using a Network Load Balancer 
+
+## Preparing for deployment
+
+### Setting up the Terraform variables
+
+#### Set Environment Variables
+```
+export TF_VAR_compartment_id=<your compartment ocid>
+export TF_VAR_region=<your region>
+export TF_VAR_ssh_public_key=<your public key>
+export TF_VAR_node_pool_id=<your node pool's ocid>
+```
+
+#### Set Terraform variables in terraform.tfvars
+```
+compartment_id = <your compartment ocid>
+region = <your region>
+ssh_public_key = <your public key>
+node_pool_id=<your node pool's ocid>
+```
+
+## Deploy Application
+```
+# Initialize
+terraform init
+
+# Review resources to be deployed
+terraform plan
+
+# Apply changes for deploy
+terraform apply
+```
+
+Access the application with public IP address.
