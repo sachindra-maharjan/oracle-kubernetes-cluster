@@ -1,16 +1,8 @@
 {
-    "name": "OCI CLI Dev Container",
-    "dockerFile": "Dockerfile",
-    "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
-    },
-    "extensions": [
-        "ms-python.python"
-    ],
-    "postCreateCommand": "oci --version",
-    "remoteUser": "vscode",
-    "forwardPorts": [],
-    "features": {
-        "python": "latest"
-    }
+  "name": "OCI CLI Devcontainer",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "extensions": [
+    "ms-vscode-remote.remote-containers"
+  ],
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y oci-cli"
 }
