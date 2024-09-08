@@ -16,5 +16,5 @@ variable "ssh_public_key" {
 variable "kubernetes_version" {
   type        = string
   description = "Kubernetes version"
-  value       = "v1.30.1"
+  default     = "v1.30.1"
 }
