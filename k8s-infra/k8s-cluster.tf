@@ -8,7 +8,7 @@ provider "oci" {
 
 resource "kubernetes_namespace" "webapp_namespace" {
   metadata {
-    name = "webapp_ns"
+    name = "webapp-ns"
   }
 }
 

@@ -38,7 +38,7 @@ terraform apply
 
 Create kubeconfig file for kubectl to access the cluster
 ```
-oci ce cluster create-kubeconfig --cluster-id <cluster OCID> --file ~/.kube/free-k8s-config --region <region> --token-version 2.0.0 --kube-endpoint PUBLIC_ENDPOINT
+oci ce cluster create-kubeconfig --cluster-id <cluster OCID> --file ~/.kube/k8s-config --region <region> --token-version 2.0.0 --kube-endpoint PUBLIC_ENDPOINT
 ```
 
 This will create a k8s-config file in the ~/.kube folder that contains the keys and all the configuration for kubectl to access the cluster.
