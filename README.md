@@ -146,3 +146,12 @@ kubectl -n <namespace> create secret docker-registry registry-secret --docker-se
 ```
 
 ## Automatic building and deployment
+
+### Add Github Secrets
+OCI_CONFIG
+OCI_KEY_FILE
+KUBECONFIG
+DOCKER_URL
+DOCKER_USERNAME
+DOCKER_PASSWORD
+DOCKER_OBJECT_STORAGE_NAMESPACE
