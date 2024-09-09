@@ -1,8 +1,0 @@
-{
-  "name": "OCI CLI Devcontainer",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-  "extensions": [
-    "ms-vscode-remote.remote-containers"
-  ],
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y oci-cli"
-}
