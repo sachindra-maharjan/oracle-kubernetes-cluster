@@ -12,24 +12,6 @@ resource "kubernetes_namespace" "webapp_namespace" {
   }
 }
 
-resource "kubernetes_service" "nginx_service" {
-  metadata {
-    name      = "nginx-service"
-    namespace = kubernetes_namespace.webapp_namespace.id
-  }
-  spec {
-    selector = {
-      app = "nginx"
-    }
-    port {
-      port        = 80
-      target_port = 80
-      node_port   = 31600
-    }
-    type = "NodePort"
-  }
-}
-
 data "oci_containerengine_node_pool" "k8s_np" {
   node_pool_id = var.node_pool_id
 }
