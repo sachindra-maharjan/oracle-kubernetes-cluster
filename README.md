@@ -93,3 +93,56 @@ terraform apply
 ```
 
 Access the application with public IP address.
+
+
+# GitHub Actions CI/CD for Oracle Cloud Kubernetes
+
+## Create Docker App
+
+Create custom index.html file
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Free Kubernetes</title>
+    </head>
+    <body>
+        <h1>This is a custom page running on a Free Kubernetes cluster on Oracle Cloud</h1>
+        <h1>Also, there's a free CICD pipeline included using GitHub Actions</h1>
+    </body>
+</html>
+```
+
+Create docker file
+```
+FROM nginx:latest
+COPY index.html /usr/share/nginx/html/index.html
+```
+
+Create and Run docker image
+```
+docker build -t kubernetes-nginx .
+
+docker run -p 80:80 kubernetes-nginx
+```
+
+## OCI Docker Login
+
+- The username for the registry comes together from those 2 in the form of <object-storage-namespace>/<username> so for example it could be abcdefgh/test123.
+- Docker server is [available by region](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Preparing_for_Registry)
+- Go to user’s details on the cloud console and select Auth Tokens to generate Auth Tokens for programmatic access to the registry.
+
+```
+docker login -u <object-storage-namespace>/<username> <docker server>
+
+#Example
+docker login -u abcdefgh/test123 https://us-ashburn-1.ocir.io
+```
+
+## Create Kubernetes Secret
+
+```
+kubectl -n <namespace> create secret docker-registry registry-secret --docker-server=<docker-server> --docker-username='<object-storage-namespace>/<username>' --docker-password='<password>'
+```
+
+## Automatic building and deployment
