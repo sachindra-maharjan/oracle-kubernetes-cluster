@@ -10,7 +10,7 @@ on:
 
 jobs:
   app-build:
-    if: github.event_name == 'push' && contains(github.event.head_commit.message, 'app')
+    if: contains(github.event.head_commit.message, 'app')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
