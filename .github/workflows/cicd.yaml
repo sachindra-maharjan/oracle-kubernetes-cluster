@@ -43,7 +43,6 @@ jobs:
           chmod +x kubectl
           mv kubectl /usr/local/bin
           echo "${{ secrets.KUBECONFIG }}" > /tmp/.kube/config
-          cat /tmp/.kube/config
           echo "KUBECONFIG=/tmp/.kube/config" >> $GITHUB_ENV
       - name: 'Currently running services'
         run: kubectl -n webapp-ns get pods
