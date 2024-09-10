@@ -1,5 +1,5 @@
 provider "kubernetes" {
-  config_path = "~/.kube/k8s-config"
+  config_path = "~/.kube/config"
 }
 
 provider "oci" {

@@ -9,7 +9,8 @@ on:
   workflow_dispatch: 
 
 jobs:
-  build:
+  app-build:
+    if: github.event_name == 'push' && contains(github.event.head_commit.message, 'app')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,15 +27,15 @@ jobs:
       - name: 'Install OCI CLI'
         run: |
           mkdir ~/.oci
-          echo "${{ secrets.OCI_CONFIG }}" > ~/.oci/config
-          echo "${{ secrets.OCI_KEY_FILE }}" > ~/.oci/key.pem
+          echo "${{ secrets.OCI_CONFIG }}" > $HOME/.oci/config
+          echo "${{ secrets.OCI_KEY_FILE }}" > $HOME/.oci/key.pem
           curl -L -O https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
           chmod +x install.sh
           ./install.sh --accept-all-defaults
           echo "/home/runner/bin" >> $GITHUB_PATH
           exec -l $SHELL
-          oci setup repair-file-permissions --file /home/runner/.oci/config
-          oci setup repair-file-permissions --file /home/runner/.oci/key.pem
+          oci setup repair-file-permissions --file $HOME/.oci/config
+          oci setup repair-file-permissions --file $HOME/.oci/key.pem
       - name: 'Install kubectl'
         run: |
           mkdir /tmp/.kube
@@ -42,6 +43,7 @@ jobs:
           chmod +x kubectl
           mv kubectl /usr/local/bin
           echo "${{ secrets.KUBECONFIG }}" > /tmp/.kube/config
+          cat /tmp/.kube/config
           echo "KUBECONFIG=/tmp/.kube/config" >> $GITHUB_ENV
       - name: 'Currently running services'
         run: kubectl -n webapp-ns get pods
