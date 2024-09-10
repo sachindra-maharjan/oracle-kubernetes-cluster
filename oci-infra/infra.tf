@@ -198,7 +198,7 @@ resource "oci_containerengine_node_pool" "k8s_node_pool" {
       availability_domain = data.oci_identity_availability_domains.ads.availability_domains[2].name
       subnet_id           = oci_core_subnet.vcn_private_subnet.id
     }
-    size = 2
+    size = 4
   }
   
   node_shape = "VM.Standard.A1.Flex"
@@ -209,7 +209,7 @@ resource "oci_containerengine_node_pool" "k8s_node_pool" {
   }
 
   node_source_details {
-    image_id    = "ocid1.image.oc1.iad.aaaaaaaawyd3zy32heqrtektg62didbxuf2saywkvc7q3xjxadsh4ai2dseq"
+    image_id    = "ocid1.image.oc1.iad.aaaaaaaaraxxl6yrjswsxem67tmf4s3ihx44xbfq2ceqlp7rgcoroqinopfa"
     source_type = "image"
   }
 
