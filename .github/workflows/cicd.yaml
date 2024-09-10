@@ -9,7 +9,7 @@ on:
   workflow_dispatch: 
 
 jobs:
-  app-build:
+  build:
     # if: contains(github.event.head_commit.message, 'app')
     runs-on: ubuntu-latest
     steps:
@@ -44,7 +44,6 @@ jobs:
           mv kubectl /usr/local/bin
           echo "${{ secrets.KUBECONFIG }}" > /tmp/.kube/config
           echo "KUBECONFIG=/tmp/.kube/config" >> $GITHUB_ENV
-          export KUBECONFIG=/tmp/.kube/config
       - name: 'Currently running services'
         run: kubectl -n webapp-ns get pods
       - name: Login to Docker registry
