@@ -1,13 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: external-lb
+  name: nginx-service
+  namespace: webapp-ns
 spec:
+  selector:
+    lbtype: external
+    app: nginx
   type: NodePort
   ports:
   - name: nginx
     port: 80
-    targetPort: "80-port"
+    targetPort: 80
     nodePort: 31600
-  selector:
-    lbtype: external

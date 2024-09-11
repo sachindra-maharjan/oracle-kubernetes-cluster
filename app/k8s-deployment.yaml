@@ -12,14 +12,13 @@ spec:
   template:
     metadata:
       labels:
-        lbtype: external
         app: nginx
+        lbtype: external
     spec:
       containers:
         - name: nginx
           image: us-ashburn-1.ocir.io/<DOCKER_OBJECT_STORAGE_NAMESPACE>/kubernetes-nginx:latest
           ports:
             - containerPort: 80
-              name: "80-port"
       imagePullSecrets:
       - name: registry-secret
