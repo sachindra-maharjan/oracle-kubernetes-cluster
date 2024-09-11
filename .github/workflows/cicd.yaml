@@ -33,7 +33,7 @@ jobs:
           chmod +x install.sh
           ./install.sh --accept-all-defaults
           echo "/home/runner/bin" >> $GITHUB_PATH
-          exec -l $SHELL
+          # exec -l $SHELL
           oci setup repair-file-permissions --file $HOME/.oci/config
           oci setup repair-file-permissions --file $HOME/.oci/key.pem
           oci iam compartment list
