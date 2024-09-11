@@ -36,8 +36,8 @@ jobs:
           exec -l $SHELL
       - name: 'Verify OCI Config'
         run: |
-          oci setup repair-file-permissions --file $HOME/.oci/config
-          oci setup repair-file-permissions --file $HOME/.oci/key.pem
+          # oci setup repair-file-permissions --file $HOME/.oci/config
+          # oci setup repair-file-permissions --file $HOME/.oci/key.pem
           oci iam compartment list
       - name: 'Install kubectl'
         run: |
