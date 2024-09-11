@@ -36,6 +36,7 @@ jobs:
           exec -l $SHELL
           oci setup repair-file-permissions --file $HOME/.oci/config
           oci setup repair-file-permissions --file $HOME/.oci/key.pem
+          oci iam compartment list
       - name: 'Install kubectl'
         run: |
           mkdir /tmp/.kube
