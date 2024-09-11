@@ -64,7 +64,7 @@ global:
   cluster: <CLUSTER_NAME>
 
   # -- The license key for your New Relic Account. This will be preferred configuration option if both `licenseKey` and `customSecret` are specified.
-  licenseKey: $NEW_RELIC_LICENSE_KEY
+  licenseKey: <NEW_RELIC_LICENSE_KEY>
   # -- The license key for your New Relic Account. This will be preferred configuration option if both `insightsKey` and `customSecret` are specified.
   insightsKey: ""
   # -- Name of the Secret object where the license key is stored
