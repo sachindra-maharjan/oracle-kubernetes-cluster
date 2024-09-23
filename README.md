@@ -155,3 +155,22 @@ DOCKER_URL
 DOCKER_USERNAME
 DOCKER_PASSWORD
 DOCKER_OBJECT_STORAGE_NAMESPACE
+
+
+### Kubernetes Cluster Monitoring using New Relic
+
+### Envrionment Variables
+```
+# Export envrionment variables
+export CLUSTER_NAME=<CLUSTER_NAME>
+export NEW_RELIC_LICENSE_KEY=<NEW_RELIC_LICENSE_KEY> 
+```
+
+### Run K8s Integration Script 
+```
+# Install using helm chart
+/k8s-mon/k8s-integration.sh install
+
+# Update helm chart (values.yaml)
+/k8s-mon/k8s-integration.sh update
+```
