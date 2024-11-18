@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    oci = {
+      source = "hashicorp/oci"
+      version = ">= 4.41.0, <= 6.18.0"
+    }
+  }
+}
+
 provider "oci" {
   region = var.region
 }
